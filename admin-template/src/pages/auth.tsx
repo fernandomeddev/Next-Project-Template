@@ -1,15 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
 import AuthInput from "@/components/auth/AuthInput";
 import { ErrorIcon } from "@/components/icons";
-import { SetStateAction, useState } from "react";
+import useAuth from "@/data/hook/useAuth";
+import { useState } from "react";
 
 export default function Authentication() {
+    const image = process.env.LOGIN_PAGE_IMAGE_ID
+
+    const { user, loginGoogle } = useAuth()
+
     const [error, setError] = useState('')
     const [mode, setMode] = useState<'login' | 'register' >('login')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     // xs:hidden sm:hidden md:hidden lg:hidden xl:block w-1/2 lg:w-2/3
+    // https://source.unsplash.com/fE42nRlBcG8/photos
+    // https://source.unsplash.com/random
 
     function showError(msg:string, time = 5){
         setError(msg)
@@ -30,7 +37,7 @@ export default function Authentication() {
     <div className="flex h-screen items-center justify-center">
         <div className="xs:hidden sm:hidden md:block md:w-2/3 lg:w-2/3">
             <img
-                src="https://source.unsplash.com/random" alt="imagem da tela de altenticação"
+                src={`https://source.unsplash.com/1Pmp9uxK8X8/photos`} alt="imagem da tela de altenticação"
                 className="h-screem w-full"
              />
         </div>
@@ -39,7 +46,7 @@ export default function Authentication() {
             <h1 className={`
                 text-xl font-bold mb-5
             `}>
-                {mode === 'login' ? 'Longin' : 'cadastre-se'}
+                {mode === 'login' ? 'Entrar' : 'Cadastre-se'}
             </h1>
 
             {error ? (
@@ -52,6 +59,7 @@ export default function Authentication() {
             ): false }
     
             <AuthInput 
+                typeField="email"
                 label={`Email`}
                 value={email}
                 changeValue={setEmail}
@@ -59,16 +67,16 @@ export default function Authentication() {
             />
     
             <AuthInput 
+                typeField="password"
                 label={`Senha`}
-                type="password"
                 value={password}
                 changeValue={setPassword}
                 requiredField
             />
 
             <AuthInput 
+                typeField="password"
                 label={`Confirme sua senha`}
-                type="password"
                 value={confirmPassword}
                 changeValue={setConfirmPassword}
                 requiredField
@@ -84,7 +92,7 @@ export default function Authentication() {
 
             <hr className="my-6 border-gray-300 w-full" />
 
-            <button onClick={submit} className={`
+            <button onClick={loginGoogle} className={`
                 w-full bg-red-500 hover:bg-red-400
                 text-white rounded-lg px-4 py-3
             `}>
