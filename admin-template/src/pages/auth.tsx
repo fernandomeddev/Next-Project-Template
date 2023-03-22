@@ -44,9 +44,9 @@ export default function Authentication() {
              />
         </div>
 
-        <div className="m-10  md:w-1/3 lg:w-1/3">
+        <div className="m-10 mt-20  md:w-1/3 lg:w-1/3">
             <h1 className={`
-                text-xl font-bold mb-5
+                text-xl font-bold 
             `}>
                 {mode === 'login' ? 'Entrar' : 'Cadastre-se'}
             </h1>
@@ -110,7 +110,6 @@ export default function Authentication() {
                     já possui cadastro? para fazer o login <a className=" font-bold cursor-pointer hover:text-blue-700" onClick={() => setMode('login')}>clique aqui</a>
                 </p>
             )}
-    
         </div>
     </div>
         
