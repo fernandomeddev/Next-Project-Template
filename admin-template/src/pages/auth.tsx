@@ -7,7 +7,7 @@ import { useState } from "react";
 export default function Authentication() {
     const image = process.env.LOGIN_PAGE_IMAGE_ID
 
-    const { user, loginGoogle } = useAuth()
+    const { register, login, user, loginGoogle } = useAuth()
 
     const [error, setError] = useState('')
     const [mode, setMode] = useState<'login' | 'register' >('login')
@@ -23,13 +23,15 @@ export default function Authentication() {
         setTimeout(() => setError(''), time * 1000)
     }
 
-    function submit(){
-        if (mode === 'login') {
-            console.log('login');
-            showError('Erro! não foi possivel efetuar o login!')
-        } else {
-            console.log('registrar')
-            showError('Erro! não foi possivel efetuar o cadastro!')
+    async function submit(){
+        try {
+            if (mode === 'login') {
+               await login(email, password)
+            } else {
+                await register(email, password)
+            }
+        } catch (error) {
+           showError(error?.message ? error.message : 'Error unknow!')
         }
     }
 

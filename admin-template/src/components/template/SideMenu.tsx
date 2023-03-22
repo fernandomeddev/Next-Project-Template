@@ -1,8 +1,12 @@
 import { AddContractIcon, ConfigurationIcon, CurrentContractIcon, IconHome, LogoutIcon, NotificationIcon } from "../icons";
 import MenuItem from "./ManuItem";
 import Logo from "./Logo";
+import useAuth from "@/data/hook/useAuth";
 
 export default function  SideMenu() {
+
+    const { logout } = useAuth()
+
     return (
         <aside className={`
             flex flex-col
@@ -24,7 +28,7 @@ export default function  SideMenu() {
                 <MenuItem url="/settings" text="configuração" icon={ConfigurationIcon} />
             </ul>
             <ul>
-                <MenuItem className="hover:bg-red-600 dark:text-red-400 text-red-400 dark:hover:text-white  hover:text-white" onClick={()=> alert('saindo....')} text="sair" icon={LogoutIcon} />
+                <MenuItem className="hover:bg-red-600 dark:text-red-400 text-red-400 dark:hover:text-white  hover:text-white" onClick={logout} text="sair" icon={LogoutIcon} />
             </ul>
         </aside>
     )
