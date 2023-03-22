@@ -22,7 +22,7 @@ export default function MenuItem(props: MenuItemProps) {
         )
     }
     return (
-        <li onClick={props.onClick} className={` hover:bg-blue-200 dark:hover:bg-gray-800 cursor-pointer`}>
+        <li onClick={props.onClick} className={` hover:bg-white dark:hover:bg-gray-800 cursor-pointer`}>
             {props.url ? (
                 <Link href={props.url}>
                     {linkRender()}

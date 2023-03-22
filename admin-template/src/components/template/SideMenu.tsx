@@ -12,6 +12,7 @@ export default function  SideMenu() {
             flex flex-col
             text-gray-900
             dark:bg-gray-900 dark:text-gray-200
+            bg-blue-200
         `}>
             <div className={`
              flex flex-col items-center 

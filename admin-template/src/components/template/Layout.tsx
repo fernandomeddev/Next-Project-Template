@@ -16,7 +16,7 @@ export default function Layout(props: LayoutProps) {
         <AuthRequired>
             <div className={` ${theme} flex h-screen w-screen`}>
             <SideMenu/>
-            <div className={`flex flex-col bg-gray-300 w-full p-7 dark:bg-gray-800`}>
+            <div className={`flex flex-col bg-white 0 w-full p-7 dark:bg-gray-800`}>
                 <Header title={props.title} subtitle={props.subtitle} />
                 <Content>
                     {props.children}
